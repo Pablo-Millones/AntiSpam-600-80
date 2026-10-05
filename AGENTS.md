@@ -35,7 +35,8 @@ Para garantizar la máxima confiabilidad en todas las marcas y capas de Android 
   - Verifica coincidencias directas y con código internacional para los prefijos configurados.
 
 ### 3. Persistencia y Reactividad
-- [`BlockRuleManager`](file:///c:/Users/Pablo/Desktop/app_bloqueo%20nro%20600%20-%20%2080/app/src/main/java/com/antispam/blocker/data/BlockRuleManager.kt): Gestiona los prefijos bloqueados y configuraciones en `SharedPreferences`.
+- [`BlockRuleManager`](file:///c:/Users/Pablo/Desktop/app_bloqueo%20nro%20600%20-%20%2080/app/src/main/java/com/antispam/blocker/data/BlockRuleManager.kt): Gestiona los prefijos bloqueados (por defecto 600, 80 y 44) y configuraciones en `SharedPreferences`.
+- [`SpamDatabaseManager`](file:///c:/Users/Pablo/Desktop/app_bloqueo%20nro%20600%20-%20%2080/app/src/main/java/com/antispam/blocker/data/SpamDatabaseManager.kt): Gestiona la base de datos comunitaria de números de spam y robocallers en Chile (+56 9 y +56 44). Provee búsqueda instantánea $O(1)$, coincidencia por expresiones regulares, sincronización remota contra GitHub (`ChileSpam.csv`) y gestión de números manuales agregados por el usuario.
 - [`BlockedCallsRepository`](file:///c:/Users/Pablo/Desktop/app_bloqueo%20nro%20600%20-%20%2080/app/src/main/java/com/antispam/blocker/data/BlockedCallsRepository.kt): Almacena el historial en formato JSON y el contador total acumulado. Expone `registerListener` / `unregisterListener` para notificar cambios en tiempo real a la interfaz.
 
 ### 4. Interfaz de Usuario (Compose)

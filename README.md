@@ -1,29 +1,29 @@
 # 🛡️ anti-spam - Bloqueador Nativo para Android
 
-[![Descargar APK v1.1.0](https://img.shields.io/badge/Descargar%20APK-v1.1.0-brightgreen?logo=android&style=for-the-badge)](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.1.0/anti-spam-v1.1.0.apk)
-[![Última Versión](https://img.shields.io/badge/Versi%C3%B3n-1.1.0-blue?style=for-the-badge)](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/tag/v1.1.0)
+[![Descargar APK v1.2.0](https://img.shields.io/badge/Descargar%20APK-v1.2.0-brightgreen?logo=android&style=for-the-badge)](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.2.0/anti-spam-v1.2.0.apk)
+[![Última Versión](https://img.shields.io/badge/Versi%C3%B3n-1.2.0-blue?style=for-the-badge)](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/tag/v1.2.0)
 [![Licencia](https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge)](LICENSE)
 
 > 📲 **Enlace directo para descargar y compartir el APK**:  
-> 👉 [**Descargar anti-spam v1.1.0 APK (Clic aquí)**](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.1.0/anti-spam-v1.1.0.apk)  
+> 👉 [**Descargar anti-spam v1.2.0 APK (Clic aquí)**](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.2.0/anti-spam-v1.2.0.apk)  
 > 📦 Ver todas las versiones en [GitHub Releases](https://github.com/Pablo-Millones/AntiSpam-600-80/releases).
 
-Aplicación Android nativa desarrollada en **Kotlin** con **Jetpack Compose** y la API oficial **`CallScreeningService`**, diseñada específicamente para interceptar y colgar llamadas no deseadas de publicidad y telemarketing cuyo número comience con **600** o **80** (incluye 800, 801, etc.).
+Aplicación Android nativa desarrollada en **Kotlin** con **Jetpack Compose** y la API oficial **`CallScreeningService`**, diseñada específicamente para interceptar y colgar llamadas no deseadas de publicidad y telemarketing (prefijos **600**, **80**, **809**, **44**) y base de datos comunitaria de números celulares virtuales (**+56 9**) en Chile.
 
 ---
 
 ## 🚀 Características Principales
 
-1. **Rechazo en Tiempo Real (`CallScreeningService`)**:
+1. **Rechazo en Tiempo Real Dual (`CallScreeningService` + `IncomingCallReceiver`)**:
    - La API oficial de Android intercepta la llamada entrante a nivel de sistema telefónico.
-   - Corta o rechaza la llamada **antes** de que el teléfono suene o vibre.
-2. **Normalización Inteligente de Números**:
-   - Detecta números con prefijos internacionales (como `+56` en Chile u otros países).
-   - Ignora espacios, guiones y paréntesis para que ningún número de spam evada el filtro.
-   - Coincide números locales (`600XXXXXXX`, `80XXXXXXX`) e internacionales (`+56600...`, `+5680...`).
+   - Respaldo instantáneo con corte inmediato mediante `TelecomManager.endCall()`, ideal para capas como ColorOS, OxygenOS, HyperOS y Motorola.
+2. **Base de Datos Spam Chile (+56 9 y +56 44)**:
+   - Base de datos local integrada con cientos de números reportados por la comunidad (*robocallers*, agentes virtuales de venta, cobranzas y fraudes).
+   - Botón de **sincronización y actualización en línea** directa desde GitHub sin tener que reinstalar la app.
+   - Posibilidad de **agregar manualmente cualquier número celular sospechoso (+56 9...)** a tu lista negra permanente.
 3. **Prefijos Personalizables**:
-   - Viene configurado por defecto para **600** y **80**.
-   - Permite agregar fácilmente otros prefijos molestos (ej: `44`, `800`, `22`, etc.) o eliminarlos con un toque.
+   - Viene configurado por defecto para **600**, **80** (que incluye 800, 809, etc.) y **44** (Telefonía IP / call centers virtuales en Chile).
+   - Permite agregar fácilmente otros prefijos molestos o eliminarlos con un toque.
 4. **Simulador y Probador Integrado**:
    - Incluye un buscador en pantalla donde puedes escribir cualquier número (ej: `+56 600 300 4000`) para ver de inmediato si sería bloqueado y cuál regla lo interceptaría.
 5. **Historial de Bloqueos y Estadísticas**:

@@ -21,6 +21,7 @@ class SpamCallScreeningService : CallScreeningService() {
     override fun onScreenCall(callDetails: Call.Details) {
         val ruleManager = BlockRuleManager(this)
         val repository = BlockedCallsRepository(this)
+        val spamDb = com.antispam.blocker.data.SpamDatabaseManager.getInstance(this)
 
         val handle = callDetails.handle
         val rawNumber = handle?.schemeSpecificPart ?: ""
@@ -42,7 +43,7 @@ class SpamCallScreeningService : CallScreeningService() {
         }
 
         val prefixes = ruleManager.getBlockedPrefixes()
-        val matchResult = PhoneNumberHelper.checkIsBlocked(rawNumber, prefixes)
+        val matchResult = PhoneNumberHelper.checkIsBlocked(rawNumber, prefixes, spamDb)
 
         if (matchResult.isBlocked) {
             Log.i(tag, "¡LLAMADA BLOQUEADA! Número: $rawNumber, Prefijo: ${matchResult.matchedPrefix}")

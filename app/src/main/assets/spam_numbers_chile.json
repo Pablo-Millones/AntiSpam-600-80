@@ -1,0 +1,1292 @@
+﻿[
+    {
+        "raw":  "+56443302101",
+        "norm":  "443302101",
+        "name":  "Tottus",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56990066022",
+        "norm":  "990066022",
+        "name":  "Agente Virtual Claro",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957032366",
+        "norm":  "957032366",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56965130021",
+        "norm":  "965130021",
+        "name":  "Robocaller",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56962336124",
+        "norm":  "962336124",
+        "name":  "Robocaller",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443302098",
+        "norm":  "443302098",
+        "name":  "Fallaferia",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56965145215",
+        "norm":  "965145215",
+        "name":  "Robocaller",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955402464",
+        "norm":  "955402464",
+        "name":  "Fraude",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442389531",
+        "norm":  "442389531",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442250811",
+        "norm":  "442250811",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56979856141",
+        "norm":  "979856141",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442250784",
+        "norm":  "442250784",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56965961594",
+        "norm":  "965961594",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56975674807",
+        "norm":  "975674807",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955530699",
+        "norm":  "955530699",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+569554000.*",
+        "norm":  "9554000",
+        "name":  "Estafa SMS",
+        "isRegex":  true
+    },
+    {
+        "raw":  "+56957561033",
+        "norm":  "957561033",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957065278",
+        "norm":  "957065278",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957229356",
+        "norm":  "957229356",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957905413",
+        "norm":  "957905413",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957826564",
+        "norm":  "957826564",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56962135715",
+        "norm":  "962135715",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957227831",
+        "norm":  "957227831",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+564433255.*",
+        "norm":  "4433255",
+        "name":  "Fraude",
+        "isRegex":  true
+    },
+    {
+        "raw":  "+56957805228",
+        "norm":  "957805228",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56956709561",
+        "norm":  "956709561",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56956469734",
+        "norm":  "956469734",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56969012809",
+        "norm":  "969012809",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56956140898",
+        "norm":  "956140898",
+        "name":  "Estafa",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56956016637",
+        "norm":  "956016637",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56224343400",
+        "norm":  "224343400",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56974784235",
+        "norm":  "974784235",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56232528451",
+        "norm":  "232528451",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56906665734",
+        "norm":  "906665734",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56950502704",
+        "norm":  "950502704",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56227189005",
+        "norm":  "227189005",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56965104352",
+        "norm":  "965104352",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56906853108",
+        "norm":  "906853108",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56229298776",
+        "norm":  "229298776",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443640732",
+        "norm":  "443640732",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957914499",
+        "norm":  "957914499",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56936072529",
+        "norm":  "936072529",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56224024888",
+        "norm":  "224024888",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56907834290",
+        "norm":  "907834290",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56936060314",
+        "norm":  "936060314",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56906582309",
+        "norm":  "906582309",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56936093171",
+        "norm":  "936093171",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56907723428",
+        "norm":  "907723428",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443640317",
+        "norm":  "443640317",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56964375777",
+        "norm":  "964375777",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56965869746",
+        "norm":  "965869746",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957143014",
+        "norm":  "957143014",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56956646056",
+        "norm":  "956646056",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56962218189",
+        "norm":  "962218189",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56962385887",
+        "norm":  "962385887",
+        "name":  "robocall",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56951442598",
+        "norm":  "951442598",
+        "name":  "la que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56965034503",
+        "norm":  "965034503",
+        "name":  "Robocall",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56962137354",
+        "norm":  "962137354",
+        "name":  "Robocall",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56965963123",
+        "norm":  "965963123",
+        "name":  "Robocall",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443320270",
+        "norm":  "443320270",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+569443430042",
+        "norm":  "9443430042",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56234002748",
+        "norm":  "234002748",
+        "name":  "Autopista",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324597",
+        "norm":  "443324597",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56908985137",
+        "norm":  "908985137",
+        "name":  "Scotia",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56939338354",
+        "norm":  "939338354",
+        "name":  "Autopista",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56234002063",
+        "norm":  "234002063",
+        "name":  "Molesta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56915718207",
+        "norm":  "915718207",
+        "name":  "Silencioso",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56962767666",
+        "norm":  "962767666",
+        "name":  "Silencioso",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56934666521",
+        "norm":  "934666521",
+        "name":  "Bot",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56965041818",
+        "norm":  "965041818",
+        "name":  "Estafa",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56901480564",
+        "norm":  "901480564",
+        "name":  "Estafa",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56972082398",
+        "norm":  "972082398",
+        "name":  "Estafa",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56226206179",
+        "norm":  "226206179",
+        "name":  "Vomistar",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56941712008",
+        "norm":  "941712008",
+        "name":  "Estafa",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955400008",
+        "norm":  "955400008",
+        "name":  "Estafa Tag",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955530605",
+        "norm":  "955530605",
+        "name":  "Cobranza Tag",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324519",
+        "norm":  "443324519",
+        "name":  "Estafa Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442174488",
+        "norm":  "442174488",
+        "name":  "Estafa Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324510",
+        "norm":  "443324510",
+        "name":  "Estafa Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324500",
+        "norm":  "443324500",
+        "name":  "Estafa Itau",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955218473",
+        "norm":  "955218473",
+        "name":  "Cobranza Austopista",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56234002779",
+        "norm":  "234002779",
+        "name":  "Robocaller",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56224865000",
+        "norm":  "224865000",
+        "name":  "Scotia",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56227189004",
+        "norm":  "227189004",
+        "name":  "Scotia",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324517",
+        "norm":  "443324517",
+        "name":  "Estafa paquete perdido",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324549",
+        "norm":  "443324549",
+        "name":  "Estafa paquete perdido",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+5651794349",
+        "norm":  "51794349",
+        "name":  "Silencioso",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56553280443",
+        "norm":  "553280443",
+        "name":  "Estafa",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56932044932",
+        "norm":  "932044932",
+        "name":  "Peligroso segÃºn Slicky.cl",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955400009",
+        "norm":  "955400009",
+        "name":  "Phishing",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56969309837",
+        "norm":  "969309837",
+        "name":  "Peligroso segÃºn Slicky.cl",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442170328",
+        "norm":  "442170328",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442623019",
+        "norm":  "442623019",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56944872025",
+        "norm":  "944872025",
+        "name":  "Estafa Autopase",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442623022",
+        "norm":  "442623022",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56936072786",
+        "norm":  "936072786",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442177473",
+        "norm":  "442177473",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56966716906",
+        "norm":  "966716906",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56936075356",
+        "norm":  "936075356",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56910806435",
+        "norm":  "910806435",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957414844",
+        "norm":  "957414844",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56952327483",
+        "norm":  "952327483",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443230691",
+        "norm":  "443230691",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56996121498",
+        "norm":  "996121498",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957206951",
+        "norm":  "957206951",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443640660",
+        "norm":  "443640660",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56939260267",
+        "norm":  "939260267",
+        "name":  "Cobro autopista",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56901366886",
+        "norm":  "901366886",
+        "name":  "Scotiabank",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56901319988",
+        "norm":  "901319988",
+        "name":  "Scotiabank",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56901361728",
+        "norm":  "901361728",
+        "name":  "Scotiabank",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56906465232",
+        "norm":  "906465232",
+        "name":  "Scotiabank",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442318675",
+        "norm":  "442318675",
+        "name":  "Robocall",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+569443430022",
+        "norm":  "9443430022",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442177428",
+        "norm":  "442177428",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442170271",
+        "norm":  "442170271",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56951508930",
+        "norm":  "951508930",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56951794349",
+        "norm":  "951794349",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56939499400",
+        "norm":  "939499400",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56926283915",
+        "norm":  "926283915",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56956911138",
+        "norm":  "956911138",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56978746838",
+        "norm":  "978746838",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56981954364",
+        "norm":  "981954364",
+        "name":  "Estafa PolÃ­tica",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+5695977.*",
+        "norm":  "95977",
+        "name":  "Claro RetenciÃ³n Clientes",
+        "isRegex":  true
+    },
+    {
+        "raw":  "+5695976.*",
+        "norm":  "95976",
+        "name":  "Claro RetenciÃ³n Clientes",
+        "isRegex":  true
+    },
+    {
+        "raw":  "+56955400088",
+        "norm":  "955400088",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56968918126",
+        "norm":  "968918126",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56225833908",
+        "norm":  "225833908",
+        "name":  "Silencioso",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324597",
+        "norm":  "443324597",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442170091",
+        "norm":  "442170091",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442645006",
+        "norm":  "442645006",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56943891008",
+        "norm":  "943891008",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442641035",
+        "norm":  "442641035",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442620784",
+        "norm":  "442620784",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56809026820",
+        "norm":  "809026820",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443390100",
+        "norm":  "443390100",
+        "name":  "Estafa Viajes",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955400087",
+        "norm":  "955400087",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56956196435",
+        "norm":  "956196435",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56942546786",
+        "norm":  "942546786",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56234001801",
+        "norm":  "234001801",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324585",
+        "norm":  "443324585",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955400064",
+        "norm":  "955400064",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442171485",
+        "norm":  "442171485",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443321380",
+        "norm":  "443321380",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957000313",
+        "norm":  "957000313",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56988376787",
+        "norm":  "988376787",
+        "name":  "Estafa Inversiones",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56974650865",
+        "norm":  "974650865",
+        "name":  "Vomistar",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56951240102",
+        "norm":  "951240102",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56951794349",
+        "norm":  "951794349",
+        "name":  "Autopista Central",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957399011",
+        "norm":  "957399011",
+        "name":  "Retail",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56901178637",
+        "norm":  "901178637",
+        "name":  "Retail",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56998004557",
+        "norm":  "998004557",
+        "name":  "silencioso",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443305004",
+        "norm":  "443305004",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56968920846",
+        "norm":  "968920846",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56942079333",
+        "norm":  "942079333",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442624001",
+        "norm":  "442624001",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56964042118",
+        "norm":  "964042118",
+        "name":  "Alo Alberto?",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56968921197",
+        "norm":  "968921197",
+        "name":  "Estafa SMS",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56978437559",
+        "norm":  "978437559",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56914800382",
+        "norm":  "914800382",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56914446666",
+        "norm":  "914446666",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56947310741",
+        "norm":  "947310741",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56979087314",
+        "norm":  "979087314",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56969304710",
+        "norm":  "969304710",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324591",
+        "norm":  "443324591",
+        "name":  "Estafa Sms",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56444210157",
+        "norm":  "444210157",
+        "name":  "Estafa",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443349980",
+        "norm":  "443349980",
+        "name":  "Estafa Abastible",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+5695556.*",
+        "norm":  "95556",
+        "name":  "Llama y cuelga",
+        "isRegex":  true
+    },
+    {
+        "raw":  "+5695559.*",
+        "norm":  "95559",
+        "name":  "Llama y cuelga",
+        "isRegex":  true
+    },
+    {
+        "raw":  "+5695558.*",
+        "norm":  "95558",
+        "name":  "LLama y cuelga",
+        "isRegex":  true
+    },
+    {
+        "raw":  "+56955592763",
+        "norm":  "955592763",
+        "name":  "Cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56901134860",
+        "norm":  "901134860",
+        "name":  "Cementerio La Cruz Recoleta",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955592260",
+        "norm":  "955592260",
+        "name":  "Cobranza Fashions Park",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56942581827",
+        "norm":  "942581827",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56234001125",
+        "norm":  "234001125",
+        "name":  "Contestadora",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56233848850",
+        "norm":  "233848850",
+        "name":  "Contestadora",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443230546",
+        "norm":  "443230546",
+        "name":  "Contestadora",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955591409",
+        "norm":  "955591409",
+        "name":  "Contestadora",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56973422225",
+        "norm":  "973422225",
+        "name":  "Estafa InversiÃ³n",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+569443430009",
+        "norm":  "9443430009",
+        "name":  "silencioso",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56229943330",
+        "norm":  "229943330",
+        "name":  "Robocall",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56228692142",
+        "norm":  "228692142",
+        "name":  "Estafa InversiÃ³n",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955590665",
+        "norm":  "955590665",
+        "name":  "Estafa",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443324591",
+        "norm":  "443324591",
+        "name":  "Estafa Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56227300534",
+        "norm":  "227300534",
+        "name":  "Estafa Valores",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+569443431548",
+        "norm":  "9443431548",
+        "name":  "Estafa Deudas",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56957578447",
+        "norm":  "957578447",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442174403",
+        "norm":  "442174403",
+        "name":  "Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56945502572",
+        "norm":  "945502572",
+        "name":  "Robocall",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56969309302",
+        "norm":  "969309302",
+        "name":  "Cobranza",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+566000820076",
+        "norm":  "6000820076",
+        "name":  "Constructora",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56969309278",
+        "norm":  "969309278",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56915842468",
+        "norm":  "915842468",
+        "name":  "Scotia",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56954979535",
+        "norm":  "954979535",
+        "name":  "Claro",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56960045711",
+        "norm":  "960045711",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56918865877",
+        "norm":  "918865877",
+        "name":  "Scotia",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955589045",
+        "norm":  "955589045",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+569443430006",
+        "norm":  "9443430006",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955589043",
+        "norm":  "955589043",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56964103070",
+        "norm":  "964103070",
+        "name":  "WOM",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955400006",
+        "norm":  "955400006",
+        "name":  "Puntos Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+569555872.*",
+        "norm":  "9555872",
+        "name":  "Robocall",
+        "isRegex":  true
+    },
+    {
+        "raw":  "+56443430003",
+        "norm":  "443430003",
+        "name":  "la que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955400077",
+        "norm":  "955400077",
+        "name":  "Puntos Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56442450008",
+        "norm":  "442450008",
+        "name":  "Spam Falabella",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955400034",
+        "norm":  "955400034",
+        "name":  "Puntos Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443320267",
+        "norm":  "443320267",
+        "name":  "Estafa sms",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56224783329",
+        "norm":  "224783329",
+        "name":  "Encuesta Ipsos",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56224783196",
+        "norm":  "224783196",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56955400033",
+        "norm":  "955400033",
+        "name":  "Puntos Copec",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56993024535",
+        "norm":  "993024535",
+        "name":  "La que cuelga",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56973922000",
+        "norm":  "973922000",
+        "name":  "Pili",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56968920843",
+        "norm":  "968920843",
+        "name":  "Estafa whatsapp",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56984494930",
+        "norm":  "984494930",
+        "name":  "AsesorÃ­a Gratuita Consorcio",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56227953145",
+        "norm":  "227953145",
+        "name":  "Ventas Scotiabank",
+        "isRegex":  false
+    },
+    {
+        "raw":  "+56443320108",
+        "norm":  "443320108",
+        "name":  "Estafa",
+        "isRegex":  false
+    }
+]

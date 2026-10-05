@@ -39,10 +39,14 @@ object PhoneNumberHelper {
     }
 
     /**
-     * Evalúa si un número coincide con alguna de las reglas de prefijos configuradas.
-     * Ejemplo de prefijos: "600", "80" (que también cubre 800, 801, etc.)
+     * Evalúa si un número coincide con alguna de las reglas de prefijos configuradas
+     * o con la base de datos de números spam de Chile (+56 9, +56 44, robocallers).
      */
-    fun checkIsBlocked(rawNumber: String, blockedPrefixes: List<String>): NumberMatchResult {
+    fun checkIsBlocked(
+        rawNumber: String,
+        blockedPrefixes: List<String>,
+        spamDb: com.antispam.blocker.data.SpamDatabaseManager? = null
+    ): NumberMatchResult {
         if (rawNumber.isBlank()) {
             return NumberMatchResult(
                 isBlocked = false,
@@ -54,11 +58,12 @@ object PhoneNumberHelper {
         val digitsOnly = rawNumber.replace(Regex("[^0-9]"), "")
         val normalized = normalize(rawNumber)
 
+        // 1. Evaluar si coincide con algún prefijo configurado (600, 80, 44, etc.)
         for (prefix in blockedPrefixes) {
             val cleanPrefix = prefix.trim().replace(Regex("[^0-9]"), "")
             if (cleanPrefix.isBlank()) continue
 
-            // 1. Verificar coincidencia directa en el número normalizado
+            // Coincidencia directa en el número normalizado
             if (normalized.startsWith(cleanPrefix)) {
                 return NumberMatchResult(
                     isBlocked = true,
@@ -68,7 +73,7 @@ object PhoneNumberHelper {
                 )
             }
 
-            // 2. Verificar también en la cadena completa de dígitos (directo, con 56 o con prefijo internacional +1 para fraudes tipo 809/800)
+            // Coincidencia en la cadena completa de dígitos (directo, con 56 o con +1 para 809)
             if (digitsOnly.startsWith(cleanPrefix) ||
                 digitsOnly.startsWith("56$cleanPrefix") ||
                 (digitsOnly.startsWith("1$cleanPrefix") && (cleanPrefix.startsWith("80") || cleanPrefix.startsWith("809")))) {
@@ -81,10 +86,23 @@ object PhoneNumberHelper {
             }
         }
 
+        // 2. Evaluar si coincide con la base de datos comunitaria de números de spam (+56 9 / +56 44)
+        if (spamDb != null && spamDb.isEnabled) {
+            val spamEntry = spamDb.isSpam(rawNumber)
+            if (spamEntry != null) {
+                return NumberMatchResult(
+                    isBlocked = true,
+                    matchedPrefix = "Spam (+56 9)",
+                    normalizedNumber = normalized,
+                    reason = "En base de datos spam: ${spamEntry.name}"
+                )
+            }
+        }
+
         return NumberMatchResult(
             isBlocked = false,
             normalizedNumber = normalized,
-            reason = "No coincide con ningún prefijo de spam activo"
+            reason = "No coincide con ningún prefijo ni lista de spam activa"
         )
     }
 }

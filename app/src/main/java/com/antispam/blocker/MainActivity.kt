@@ -51,6 +51,7 @@ class MainActivity : ComponentActivity() {
 
         ruleManager = BlockRuleManager(this)
         repository = BlockedCallsRepository(this)
+        val spamDb = com.antispam.blocker.data.SpamDatabaseManager.getInstance(this)
 
         checkRoleStatus()
         requestNecessaryPermissions()
@@ -60,6 +61,7 @@ class MainActivity : ComponentActivity() {
                 MainScreen(
                     ruleManager = ruleManager,
                     repository = repository,
+                    spamDb = spamDb,
                     isRoleGranted = isRoleGranted,
                     onRequestRole = { requestCallScreeningRole() }
                 )

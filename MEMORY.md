@@ -7,10 +7,10 @@ Documento de memoria persistente para el desarrollo y contexto histórico del pr
 ## 📌 Datos Clave del Proyecto
 - **Nombre**: anti-spam (anteriormente AntiSpam 600 y 80)
 - **Repositorio**: `https://github.com/Pablo-Millones/AntiSpam-600-80`
-- **Última Versión Estable**: `v1.1.0` (versionCode: `2`, versionName: `"1.1.0"`)
-- **Enlace de Descarga Directa**: [anti-spam-v1.1.0.apk](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.1.0/anti-spam-v1.1.0.apk)
+- **Última Versión Estable**: `v1.2.0` (versionCode: `3`, versionName: `"1.2.0"`)
+- **Enlace de Descarga Directa**: [anti-spam-v1.2.0.apk](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.2.0/anti-spam-v1.2.0.apk)
 - **Tecnologías**: Android SDK 34, Kotlin 1.9+, Jetpack Compose BOM 2024.06.00, Gradle 8.4, Java 17.
-- **Dispositivo de Pruebas Físico**: OnePlus Ace 5 (ColorOS / Android 14/15).
+- **Dispositivo de Pruebas Físico**: OnePlus Ace 5 (ColorOS / Android 14/15) y Motorola (Android puro / MyUX).
 
 ---
 
@@ -38,6 +38,16 @@ Documento de memoria persistente para el desarrollo y contexto histórico del pr
   - Nombre oficial simplificado a `anti-spam`.
 - **Publicación**:
   - Release `v1.1.0` en GitHub Releases con binario `anti-spam-v1.1.0.apk`.
+
+### v1.2.0 (05-10-2026) - Base de Datos Spam Chile (+56 9) y Telefonía IP (44)
+- **Problema Abordado**: Las empresas y call centers en Chile utilizan números celulares virtuales (`+56 9 ...`) y troncales de voz sobre IP (`+56 44 ...`) para eludir los prefijos obligatorios de Subtel (`809` y `600`) y pasar por debajo del filtro.
+- **Solución Implementada**:
+  - Integración de `SpamDatabaseManager` con base de datos embebida de números reportados en Chile (`assets/spam_numbers_chile.json` basado en `SpamChile`).
+  - Sincronización Over-The-Air (OTA) contra repositorio comunitario en GitHub con botón en la interfaz y manejo de errores.
+  - Capacidad para que el usuario agregue manualmente cualquier número móvil (+56 9) a su lista negra local permanente.
+  - Inclusión del prefijo `44` (telefonía IP en Chile) a los prefijos de bloqueo por defecto.
+  - Intercepción dual (`SpamCallScreeningService` y `IncomingCallReceiver`) cotejando tanto prefijos como la base de datos de spam.
+  - Release `v1.2.0` con asset `anti-spam-v1.2.0.apk`.
 
 ---
 

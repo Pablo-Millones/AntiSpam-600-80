@@ -15,8 +15,8 @@ class BlockRuleManager(context: Context) {
         private const val KEY_KEEP_IN_LOG = "key_keep_in_log"
         private const val KEY_SILENT_NOTIFICATION = "key_silent_notification"
 
-        // Prefijos por defecto solicitados: 600 y los que empiezan en 80 (cubre 800, 801, 80, etc.)
-        val DEFAULT_PREFIXES = listOf("600", "80")
+        // Prefijos por defecto: 600, 80 (cubre 800, 809, etc.) y 44 (Telefonía IP/VoIP en Chile)
+        val DEFAULT_PREFIXES = listOf("600", "80", "44")
     }
 
     var isProtectionEnabled: Boolean

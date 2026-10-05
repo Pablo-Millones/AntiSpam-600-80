@@ -37,6 +37,7 @@ class IncomingCallReceiver : BroadcastReceiver() {
         Log.d(tag, "Llamada timbrando detectada vía PHONE_STATE. Número: '$rawNumber'")
 
         val ruleManager = BlockRuleManager(context)
+        val spamDb = com.antispam.blocker.data.SpamDatabaseManager.getInstance(context)
         if (!ruleManager.isProtectionEnabled) {
             return
         }
@@ -46,7 +47,7 @@ class IncomingCallReceiver : BroadcastReceiver() {
         }
 
         val prefixes = ruleManager.getBlockedPrefixes()
-        val matchResult = PhoneNumberHelper.checkIsBlocked(rawNumber, prefixes)
+        val matchResult = PhoneNumberHelper.checkIsBlocked(rawNumber, prefixes, spamDb)
 
         if (matchResult.isBlocked) {
             Log.i(tag, "¡LLAMADA SPAM DETECTADA POR RECEIVER! Cortando llamada de: $rawNumber")

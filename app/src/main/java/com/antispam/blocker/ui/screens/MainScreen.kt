@@ -34,22 +34,35 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.compose.ui.platform.LocalLifecycleOwner
+import com.antispam.blocker.data.SpamDatabaseManager
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun MainScreen(
     ruleManager: BlockRuleManager,
     repository: BlockedCallsRepository,
+    spamDb: SpamDatabaseManager,
     isRoleGranted: Boolean,
     onRequestRole: () -> Unit
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
+    val coroutineScope = rememberCoroutineScope()
 
     var isEnabled by remember { mutableStateOf(ruleManager.isProtectionEnabled) }
     var prefixes by remember { mutableStateOf(ruleManager.getBlockedPrefixes()) }
     var history by remember { mutableStateOf(repository.getBlockedCalls()) }
     var totalBlocked by remember { mutableStateOf(repository.getTotalBlockedCount()) }
+
+    var isDbEnabled by remember { mutableStateOf(spamDb.isEnabled) }
+    var dbTotalCount by remember { mutableStateOf(spamDb.totalCount) }
+    var customNumbersList by remember { mutableStateOf(spamDb.getCustomList()) }
+    var isSyncing by remember { mutableStateOf(false) }
+
+    var showAddNumberDialog by remember { mutableStateOf(false) }
+    var manualNumberText by remember { mutableStateOf("") }
+    var manualNameText by remember { mutableStateOf("") }
 
     var newPrefixText by remember { mutableStateOf("") }
     var testNumberText by remember { mutableStateOf("") }
@@ -62,6 +75,9 @@ fun MainScreen(
         prefixes = ruleManager.getBlockedPrefixes()
         history = repository.getBlockedCalls()
         totalBlocked = repository.getTotalBlockedCount()
+        dbTotalCount = spamDb.totalCount
+        customNumbersList = spamDb.getCustomList()
+        isDbEnabled = spamDb.isEnabled
     }
 
     // Actualizar automáticamente cuando la app vuelve al primer plano
@@ -91,6 +107,67 @@ fun MainScreen(
     val subtleTextColor = MaterialTheme.colorScheme.onSurfaceVariant
     val cardBgColor = MaterialTheme.colorScheme.surface
     val chipBgColor = MaterialTheme.colorScheme.surfaceVariant
+
+    if (showAddNumberDialog) {
+        AlertDialog(
+            onDismissRequest = { showAddNumberDialog = false },
+            title = {
+                Text(
+                    text = "Bloquear número celular (+56 9)",
+                    fontWeight = FontWeight.Bold
+                )
+            },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text(
+                        text = "Ingresa el número que te molestó para agregarlo a tu lista negra permanente:",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    OutlinedTextField(
+                        value = manualNumberText,
+                        onValueChange = { manualNumberText = it },
+                        label = { Text("Número telefónico") },
+                        placeholder = { Text("Ej: +56 9 8765 4321") },
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    OutlinedTextField(
+                        value = manualNameText,
+                        onValueChange = { manualNameText = it },
+                        label = { Text("Motivo / Identificación (opcional)") },
+                        placeholder = { Text("Ej: Venta / Cobranza") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        if (manualNumberText.isNotBlank()) {
+                            val added = spamDb.addCustomNumber(manualNumberText, manualNameText)
+                            if (added) {
+                                refreshState()
+                                Toast.makeText(context, "Número agregado a la lista de bloqueo", Toast.LENGTH_SHORT).show()
+                                manualNumberText = ""
+                                manualNameText = ""
+                                showAddNumberDialog = false
+                            }
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Indigo500)
+                ) {
+                    Text("Bloquear", color = Color.White)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showAddNumberDialog = false }) {
+                    Text("Cancelar")
+                }
+            }
+        )
+    }
 
     Scaffold(
         topBar = {
@@ -133,7 +210,7 @@ fun MainScreen(
                                 type = "text/plain"
                                 putExtra(
                                     android.content.Intent.EXTRA_TEXT,
-                                    "Descarga anti-spam v1.1.0 para bloquear llamadas molestas (prefijos 600 y 80):\nhttps://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.1.0/anti-spam-v1.1.0.apk"
+                                    "Descarga anti-spam v1.2.0 con base de datos de spam (+56 9) y bloqueo de prefijos 600, 80 y 44:\nhttps://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.2.0/anti-spam-v1.2.0.apk"
                                 )
                             }
                             context.startActivity(android.content.Intent.createChooser(shareIntent, "Compartir anti-spam"))
@@ -418,7 +495,189 @@ fun MainScreen(
                 }
             }
 
-            // 4. Simulador / Probador de Números
+            // 4. Base de Datos de Spam Móvil y Virtual (+56 9 / +56 44)
+            item {
+                Card(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(containerColor = cardBgColor),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+                ) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(38.dp)
+                                        .clip(RoundedCornerShape(10.dp))
+                                        .background(Indigo500.copy(alpha = 0.15f)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.CloudDownload,
+                                        contentDescription = null,
+                                        tint = Indigo500,
+                                        modifier = Modifier.size(22.dp)
+                                    )
+                                }
+                                Spacer(modifier = Modifier.width(10.dp))
+                                Column {
+                                    Text(
+                                        text = "Base de Datos Spam (+56 9)",
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 17.sp,
+                                        color = MaterialTheme.colorScheme.onSurface
+                                    )
+                                    Text(
+                                        text = if (isDbEnabled) "Filtro activo ($dbTotalCount números)" else "Filtro desactivado",
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = if (isDbEnabled) Emerald500 else subtleTextColor
+                                    )
+                                }
+                            }
+                            Switch(
+                                checked = isDbEnabled,
+                                onCheckedChange = { checked ->
+                                    isDbEnabled = checked
+                                    spamDb.isEnabled = checked
+                                }
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(10.dp))
+
+                        Text(
+                            text = "Bloquea números móviles (+56 9) y telefonía IP (+56 44) usados por call centers en Chile para pasar por debajo del filtro (robocallers, agentes virtuales y estafas).",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = subtleTextColor
+                        )
+
+                        Spacer(modifier = Modifier.height(14.dp))
+
+                        // Botones de acción: Sincronizar y Agregar manual
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            OutlinedButton(
+                                onClick = {
+                                    if (!isSyncing) {
+                                        isSyncing = true
+                                        coroutineScope.launch {
+                                            val result = spamDb.syncWithRemote()
+                                            isSyncing = false
+                                            result.onSuccess { count ->
+                                                refreshState()
+                                                Toast.makeText(
+                                                    context,
+                                                    "¡Base de datos actualizada! ($count números reportados)",
+                                                    Toast.LENGTH_LONG
+                                                ).show()
+                                            }.onFailure { error ->
+                                                Toast.makeText(
+                                                    context,
+                                                    "No se pudo sincronizar: ${error.localizedMessage ?: "Revisa tu conexión"}",
+                                                    Toast.LENGTH_LONG
+                                                ).show()
+                                            }
+                                        }
+                                    }
+                                },
+                                modifier = Modifier.weight(1f),
+                                shape = RoundedCornerShape(10.dp),
+                                enabled = !isSyncing
+                            ) {
+                                if (isSyncing) {
+                                    CircularProgressIndicator(
+                                        modifier = Modifier.size(16.dp),
+                                        strokeWidth = 2.dp,
+                                        color = Indigo500
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text("Actualizando...", fontSize = 11.sp)
+                                } else {
+                                    Icon(
+                                        imageVector = Icons.Default.Sync,
+                                        contentDescription = null,
+                                        tint = Indigo500,
+                                        modifier = Modifier.size(16.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(6.dp))
+                                    Text("Actualizar lista", fontSize = 11.sp)
+                                }
+                            }
+
+                            Button(
+                                onClick = { showAddNumberDialog = true },
+                                modifier = Modifier.weight(1f),
+                                shape = RoundedCornerShape(10.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Indigo500)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Add,
+                                    contentDescription = null,
+                                    tint = Color.White,
+                                    modifier = Modifier.size(16.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text("Bloquear +56 9", fontSize = 11.sp, color = Color.White)
+                            }
+                        }
+
+                        // Lista de números agregados manualmente
+                        if (customNumbersList.isNotEmpty()) {
+                            Spacer(modifier = Modifier.height(14.dp))
+                            Text(
+                                text = "Tus números agregados manualmente (${customNumbersList.size}):",
+                                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                            Spacer(modifier = Modifier.height(6.dp))
+                            FlowRow(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                verticalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                customNumbersList.forEach { entry ->
+                                    AssistChip(
+                                        onClick = { },
+                                        label = {
+                                            Text(
+                                                text = "${entry.raw} (${entry.name})",
+                                                fontSize = 11.sp,
+                                                color = MaterialTheme.colorScheme.onSurface
+                                            )
+                                        },
+                                        trailingIcon = {
+                                            IconButton(
+                                                onClick = {
+                                                    spamDb.removeCustomNumber(entry.raw)
+                                                    refreshState()
+                                                    Toast.makeText(context, "Número eliminado de la lista", Toast.LENGTH_SHORT).show()
+                                                },
+                                                modifier = Modifier.size(16.dp)
+                                            ) {
+                                                Icon(
+                                                    imageVector = Icons.Default.Close,
+                                                    contentDescription = "Eliminar",
+                                                    tint = Red500,
+                                                    modifier = Modifier.size(14.dp)
+                                                )
+                                            }
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 5. Simulador / Probador de Números
             item {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
@@ -450,7 +709,7 @@ fun MainScreen(
                             value = testNumberText,
                             onValueChange = { testNumberText = it },
                             label = { Text("Número telefónico") },
-                            placeholder = { Text("Ej: +56 600 300 4000 o 80234567") },
+                            placeholder = { Text("Ej: +56 600 300 4000, 80234567 o +56 9 9006 6022") },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                             singleLine = true,
                             modifier = Modifier.fillMaxWidth(),
@@ -466,7 +725,7 @@ fun MainScreen(
 
                         if (testNumberText.isNotBlank()) {
                             Spacer(modifier = Modifier.height(10.dp))
-                            val testResult = PhoneNumberHelper.checkIsBlocked(testNumberText, prefixes)
+                            val testResult = PhoneNumberHelper.checkIsBlocked(testNumberText, prefixes, spamDb)
 
                             Card(
                                 modifier = Modifier.fillMaxWidth(),
@@ -509,7 +768,7 @@ fun MainScreen(
                         OutlinedButton(
                             onClick = {
                                 val targetNumber = if (testNumberText.isNotBlank()) testNumberText.trim() else "+56 600 300 4000"
-                                val check = PhoneNumberHelper.checkIsBlocked(targetNumber, prefixes)
+                                val check = PhoneNumberHelper.checkIsBlocked(targetNumber, prefixes, spamDb)
                                 val detectedPrefix = check.matchedPrefix ?: (if (targetNumber.contains("600")) "600" else "80")
                                 repository.addBlockedCall(targetNumber, detectedPrefix)
                                 refreshState()
