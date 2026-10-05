@@ -1,5 +1,13 @@
 # 🛡️ anti-spam - Bloqueador Nativo para Android
 
+[![Descargar APK v1.1.0](https://img.shields.io/badge/Descargar%20APK-v1.1.0-brightgreen?logo=android&style=for-the-badge)](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.1.0/anti-spam-v1.1.0.apk)
+[![Última Versión](https://img.shields.io/badge/Versi%C3%B3n-1.1.0-blue?style=for-the-badge)](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/tag/v1.1.0)
+[![Licencia](https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge)](LICENSE)
+
+> 📲 **Enlace directo para descargar y compartir el APK**:  
+> 👉 [**Descargar anti-spam v1.1.0 APK (Clic aquí)**](https://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.1.0/anti-spam-v1.1.0.apk)  
+> 📦 Ver todas las versiones en [GitHub Releases](https://github.com/Pablo-Millones/AntiSpam-600-80/releases).
+
 Aplicación Android nativa desarrollada en **Kotlin** con **Jetpack Compose** y la API oficial **`CallScreeningService`**, diseñada específicamente para interceptar y colgar llamadas no deseadas de publicidad y telemarketing cuyo número comience con **600** o **80** (incluye 800, 801, etc.).
 
 ---

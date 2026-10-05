@@ -126,6 +126,26 @@ fun MainScreen(
                         }
                     }
                 },
+                actions = {
+                    IconButton(
+                        onClick = {
+                            val shareIntent = android.content.Intent(android.content.Intent.ACTION_SEND).apply {
+                                type = "text/plain"
+                                putExtra(
+                                    android.content.Intent.EXTRA_TEXT,
+                                    "Descarga anti-spam v1.1.0 para bloquear llamadas molestas (prefijos 600 y 80):\nhttps://github.com/Pablo-Millones/AntiSpam-600-80/releases/download/v1.1.0/anti-spam-v1.1.0.apk"
+                                )
+                            }
+                            context.startActivity(android.content.Intent.createChooser(shareIntent, "Compartir anti-spam"))
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Share,
+                            contentDescription = "Compartir enlace de descarga del APK",
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 )
