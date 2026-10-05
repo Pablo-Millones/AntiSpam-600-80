@@ -26,7 +26,7 @@ object PhoneNumberHelper {
 
         // Remoción de código de país común (ejemplo Chile +56) si viene en formato internacional
         // +56 600... -> 56600...
-        if (cleaned.startsWith("56") && cleaned.length >= 10) {
+        if (cleaned.startsWith("56") && cleaned.length >= 6) {
             cleaned = cleaned.substring(2)
         }
 
@@ -68,8 +68,8 @@ object PhoneNumberHelper {
                 )
             }
 
-            // 2. Verificar también en la cadena completa de dígitos (por si vino como 56600... o 600...)
-            if (digitsOnly.startsWith(cleanPrefix)) {
+            // 2. Verificar también en la cadena completa de dígitos (directo o con 56)
+            if (digitsOnly.startsWith(cleanPrefix) || digitsOnly.startsWith("56$cleanPrefix")) {
                 return NumberMatchResult(
                     isBlocked = true,
                     matchedPrefix = cleanPrefix,

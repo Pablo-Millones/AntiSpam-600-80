@@ -1,4 +1,4 @@
-# 🛡️ AntiSpam 600 y 80 - Bloqueador Nativo para Android
+# 🛡️ anti-spam - Bloqueador Nativo para Android
 
 Aplicación Android nativa desarrollada en **Kotlin** con **Jetpack Compose** y la API oficial **`CallScreeningService`**, diseñada específicamente para interceptar y colgar llamadas no deseadas de publicidad y telemarketing cuyo número comience con **600** o **80** (incluye 800, 801, etc.).
 

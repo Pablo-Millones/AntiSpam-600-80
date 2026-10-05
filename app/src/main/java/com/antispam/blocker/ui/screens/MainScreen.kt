@@ -28,6 +28,13 @@ import com.antispam.blocker.data.BlockedCallsRepository
 import com.antispam.blocker.ui.theme.*
 import com.antispam.blocker.util.PhoneNumberHelper
 
+import android.content.SharedPreferences
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.compose.ui.platform.LocalLifecycleOwner
+
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun MainScreen(
@@ -36,6 +43,9 @@ fun MainScreen(
     isRoleGranted: Boolean,
     onRequestRole: () -> Unit
 ) {
+    val context = LocalContext.current
+    val lifecycleOwner = LocalLifecycleOwner.current
+
     var isEnabled by remember { mutableStateOf(ruleManager.isProtectionEnabled) }
     var prefixes by remember { mutableStateOf(ruleManager.getBlockedPrefixes()) }
     var history by remember { mutableStateOf(repository.getBlockedCalls()) }
@@ -52,6 +62,30 @@ fun MainScreen(
         prefixes = ruleManager.getBlockedPrefixes()
         history = repository.getBlockedCalls()
         totalBlocked = repository.getTotalBlockedCount()
+    }
+
+    // Actualizar automáticamente cuando la app vuelve al primer plano
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) {
+                refreshState()
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+        }
+    }
+
+    // Actualizar en tiempo real cuando el servicio en segundo plano guarde una llamada cortada
+    DisposableEffect(repository) {
+        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
+            refreshState()
+        }
+        repository.registerListener(listener)
+        onDispose {
+            repository.unregisterListener(listener)
+        }
     }
 
     val subtleTextColor = MaterialTheme.colorScheme.onSurfaceVariant
@@ -80,7 +114,7 @@ fun MainScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column {
                             Text(
-                                text = "AntiSpam 600 y 80",
+                                text = "anti-spam",
                                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                                 color = MaterialTheme.colorScheme.onSurface
                             )
@@ -136,9 +170,9 @@ fun MainScreen(
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
                             text = if (isRoleGranted)
-                                "Tu Ace 5 ha asignado a AntiSpam como filtro oficial. Las llamadas de números 600 y 80 se colgarán en segundo plano."
+                                "Tu teléfono ha asignado a anti-spam como filtro oficial. Las llamadas de números 600 y 80 se colgarán en segundo plano."
                             else
-                                "Para que Android permita colgar llamadas no deseadas antes de que suenen, presiona el botón inferior y selecciona esta app como 'Filtro de llamadas y spam'.",
+                                "Para que Android permita colgar llamadas no deseadas antes de que suenen, presiona el botón inferior y selecciona anti-spam como 'Filtro de llamadas y spam'.",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurface
                         )
@@ -448,6 +482,42 @@ fun MainScreen(
                                 }
                             }
                         }
+
+                        Spacer(modifier = Modifier.height(14.dp))
+
+                        // Botón de prueba para verificar en vivo que el contador y el historial funcionan
+                        OutlinedButton(
+                            onClick = {
+                                val targetNumber = if (testNumberText.isNotBlank()) testNumberText.trim() else "+56 600 300 4000"
+                                val check = PhoneNumberHelper.checkIsBlocked(targetNumber, prefixes)
+                                val detectedPrefix = check.matchedPrefix ?: (if (targetNumber.contains("600")) "600" else "80")
+                                repository.addBlockedCall(targetNumber, detectedPrefix)
+                                refreshState()
+                                Toast.makeText(
+                                    context,
+                                    "¡Llamada simulada ($targetNumber)! Contador sumó +1",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(10.dp),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                contentColor = MaterialTheme.colorScheme.onSurface
+                            )
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.BugReport,
+                                contentDescription = null,
+                                tint = Indigo500,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Simular llamada spam de prueba (+1 al contador)",
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 13.sp
+                            )
+                        }
                     }
                 }
             }
@@ -472,14 +542,16 @@ fun MainScreen(
                                 fontSize = 17.sp,
                                 color = MaterialTheme.colorScheme.onSurface
                             )
-                            if (history.isNotEmpty()) {
+                            if (history.isNotEmpty() || totalBlocked > 0) {
                                 TextButton(
                                     onClick = {
                                         repository.clearHistory()
+                                        repository.resetCounter()
                                         refreshState()
+                                        Toast.makeText(context, "Historial y contador restablecidos a 0", Toast.LENGTH_SHORT).show()
                                     }
                                 ) {
-                                    Text("Vaciar", color = Red500, fontSize = 12.sp)
+                                    Text("Vaciar (0)", color = Red500, fontSize = 12.sp)
                                 }
                             }
                         }

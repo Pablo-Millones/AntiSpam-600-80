@@ -66,4 +66,12 @@ class BlockedCallsRepository(context: Context) {
     fun resetCounter() {
         prefs.edit().putInt(KEY_TOTAL_COUNT, 0).apply()
     }
+
+    fun registerListener(listener: SharedPreferences.OnSharedPreferenceChangeListener) {
+        prefs.registerOnSharedPreferenceChangeListener(listener)
+    }
+
+    fun unregisterListener(listener: SharedPreferences.OnSharedPreferenceChangeListener) {
+        prefs.unregisterOnSharedPreferenceChangeListener(listener)
+    }
 }

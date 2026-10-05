@@ -41,9 +41,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    // Permiso de notificaciones para Android 13+
-    private val notificationPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
+    // Lanzador para solicitar permisos de sistema (Teléfono, Registro y Cortar Llamadas)
+    private val permissionsLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
     ) { _ -> }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
         repository = BlockedCallsRepository(this)
 
         checkRoleStatus()
-        requestNotificationPermissionIfNeeded()
+        requestNecessaryPermissions()
 
         setContent {
             SpamBlockerTheme {
@@ -111,7 +111,7 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
             Toast.makeText(
                 this,
-                "Selecciona 'Identificador de llamadas y spam' y elige AntiSpam 600 y 80",
+                "Selecciona 'Identificador de llamadas y spam' y elige anti-spam",
                 Toast.LENGTH_LONG
             ).show()
         } catch (e: Exception) {
@@ -127,12 +127,35 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun requestNotificationPermissionIfNeeded() {
+    private fun requestNecessaryPermissions() {
+        val permissionsToRequest = mutableListOf<String>()
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
                 != PackageManager.PERMISSION_GRANTED) {
-                notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                permissionsToRequest.add(Manifest.permission.POST_NOTIFICATIONS)
             }
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)
+            != PackageManager.PERMISSION_GRANTED) {
+            permissionsToRequest.add(Manifest.permission.READ_PHONE_STATE)
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CALL_LOG)
+            != PackageManager.PERMISSION_GRANTED) {
+            permissionsToRequest.add(Manifest.permission.READ_CALL_LOG)
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ANSWER_PHONE_CALLS)
+                != PackageManager.PERMISSION_GRANTED) {
+                permissionsToRequest.add(Manifest.permission.ANSWER_PHONE_CALLS)
+            }
+        }
+
+        if (permissionsToRequest.isNotEmpty()) {
+            permissionsLauncher.launch(permissionsToRequest.toTypedArray())
         }
     }
 }
