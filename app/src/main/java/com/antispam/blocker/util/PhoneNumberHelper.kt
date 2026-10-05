@@ -68,8 +68,10 @@ object PhoneNumberHelper {
                 )
             }
 
-            // 2. Verificar también en la cadena completa de dígitos (directo o con 56)
-            if (digitsOnly.startsWith(cleanPrefix) || digitsOnly.startsWith("56$cleanPrefix")) {
+            // 2. Verificar también en la cadena completa de dígitos (directo, con 56 o con prefijo internacional +1 para fraudes tipo 809/800)
+            if (digitsOnly.startsWith(cleanPrefix) ||
+                digitsOnly.startsWith("56$cleanPrefix") ||
+                (digitsOnly.startsWith("1$cleanPrefix") && (cleanPrefix.startsWith("80") || cleanPrefix.startsWith("809")))) {
                 return NumberMatchResult(
                     isBlocked = true,
                     matchedPrefix = cleanPrefix,

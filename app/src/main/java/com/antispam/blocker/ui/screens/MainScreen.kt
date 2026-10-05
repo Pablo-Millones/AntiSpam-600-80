@@ -313,7 +313,7 @@ fun MainScreen(
                         }
 
                         Text(
-                            text = "Toda llamada cuyo número comience con estos dígitos será rechazada (cubre +56 600, 600, +56 80, 800, etc.):",
+                            text = "Toda llamada cuyo número comience con estos dígitos será rechazada (cubre +56 600, 600, +56 80, 800, 809, etc.):",
                             style = MaterialTheme.typography.bodyMedium,
                             color = subtleTextColor
                         )
@@ -331,7 +331,7 @@ fun MainScreen(
                                     onClick = { },
                                     label = {
                                         Text(
-                                            text = if (prefix == "600") "600 (Servicios/Promo)" else if (prefix == "80") "80 (800, 801, 80x...)" else "Prefijo: $prefix",
+                                            text = if (prefix == "600") "600 (Servicios/Promo)" else if (prefix == "80") "80 (800, 809, 80x...)" else "Prefijo: $prefix",
                                             fontWeight = FontWeight.SemiBold,
                                             color = MaterialTheme.colorScheme.onSurface
                                         )
